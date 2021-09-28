@@ -1,57 +1,55 @@
-# Project Name
+# Serverless web application
 
-(short, 1-3 sentenced, description of the project)
+This sample references an architecture of a [serverless web application](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/serverless/web-app). The application serves static Angular.JS content from Azure Blob Storage (Static Website), and implements REST APIs for CRUD of a to do list with Azure Functions. The API reads data from Cosmos DB and returns the results to the web app. The GitHub workflow uses Azure Bicep for Infrastructure as Code to deploy and configure Azure resources.
 
-## Features
+![Architecture Diagram](./media/serverless-web-app.svg)
 
-This project framework provides the following features:
+## Security
 
-* Feature 1
-* Feature 2
-* ...
+The application uses MSAL.js (1.x) with Implicit flow to authenticate users. You can choose between Implicit flow and Authorization code flow for Single-page application (SPA) and API pattern. However, Authorization code flow is a recommended flow as it is more secure. The built-in authentication on Azure Functions is enabled for Authentication and authorization. In order for the authentication to work, the GitHub workflow uses AZ CLI to register the applications on Azure Active Directory and configure permissions between the SPA and API. Both Azure API Manager and Functions also implement CORS policy to allow only traffic from the client origin to access the API. Azure Functions has network access restriction is enabled to allow only traffic from API Management's IP address to make the request. To connect to Cosmos DB, Azure Functions uses Managed Identity to read connection strings stored in Azure Key Vault.
 
-## Getting Started
+## Azure Functions HTTP Trigger and OpenAPI documents
 
-### Prerequisites
+On APIM, there are two approaches to import Azure Functions as API.
 
-(ideally very short, if any)
+1. Azure backend integration.
 
-- OS
-- Library version
-- ...
+    This is done through adding backend services of your Functions. This uses Functions' app key to access functions. The Bicep module [apimAPI.bicep](./deploy/modules/apimAPI.bicep) demonstrates how deploy this.
 
-### Installation
+1. OpenAPI definition.
 
-(ideally very short)
+    By default, Azure Functions HTTP Trigger does not follow OpenAPI standard. [OpenAPI extension](https://github.com/Azure/azure-functions-openapi-extension/blob/main/docs/.enable-open-api-endpoints-in-proc.md) is required to enable OpenAPI documents. The Bicep module [apimOpenAPI.bicep](./deploy/modules/apimOpenAPI.bicep) demonstrates how deploy this.
 
-- npm install [package name]
-- mvn install
-- ...
+## Prerequisites
 
-### Quickstart
-(Add steps to get up and running quickly)
+1. GitHub account and repository.
+1. Azure subscription.
+1. [User-assigned managed identity (MSI)](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp#create-a-user-assigned-managed-identity) with Contributor role. This will be used for executing Deployment Scripts in Bicep.
+1. A Service Principal with Contributor role at subscription scope. This is the identity that will be used to access the Azure resources from GitHub Action. The account also requires [Read/Write permissions to Azure Graph API](https://docs.microsoft.com/en-us/graph/notifications-integration-app-registration#api-permissions).
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+## How to deploy
 
+1. Fork this repo to your GitHub account.
+1. Clone the copy repo to your local machine.
+1. Edit [workflow](./.github/workflows/serverless-api.yml); modify parameter values.
+1. Optional parameters in [Bicep file](./deploy/main.bicep) can be edited.
+1. Commit changes will automatically trigger the workflow to deploy Azure resources and applications.
 
-## Demo
+## References
 
-A demo app is included to show how to use the project.
+* [Azure Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview)
+* [Protect a web API backend in Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Host a RESTful API with CORS in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-rest-api)
+* [Authentication and Authorization flow single-page application](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-overview)
+* [Azure Functions and App Services built-in authentication](https://docs.microsoft.com/en-us/azure/app-service/overview-authentication-authorization)
+* [API Management cross domain policies](https://docs.microsoft.com/en-us/azure/api-management/api-management-cross-domain-policies#AllowCrossDomainCalls)
+* [Azure Functions and App Services network access restriction](https://docs.microsoft.com/en-us/azure/app-service/networking-features#access-restrictions)
+* [Use Key Vault from App Service with Azure Managed Identity](https://docs.microsoft.com/en-us/samples/azure-samples/app-service-msi-keyvault-dotnet/keyvault-msi-appservice-sample/)
 
-To run the demo, follow these steps:
+## License
 
-(Add steps to start up the demo)
+See [LICENSE](./LICENSE.md).
 
-1.
-2.
-3.
+## Contributing
 
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments. More details on how to contribute see [contributing guide](./CONTRIBUTING.md).

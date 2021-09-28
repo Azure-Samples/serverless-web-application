@@ -1,0 +1,13 @@
+<policies>
+    <inbound>
+        <base />
+        <set-backend-service id="apim-generated-policy" backend-id="__BACKEND-ID__" />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound />
+    <on-error>
+        <base />
+    </on-error>
+</policies>

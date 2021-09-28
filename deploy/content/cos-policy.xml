@@ -1,0 +1,23 @@
+<policies>
+    <inbound>
+        <cors>
+            <allowed-origins>
+                <origin>__ORIGIN__</origin>
+            </allowed-origins>
+            <allowed-methods>
+                <method>*</method>
+            </allowed-methods>
+            <allowed-headers>
+                <header>*</header>
+            </allowed-headers>
+            <expose-headers>
+                <header>*</header>
+            </expose-headers>
+        </cors>
+    </inbound>
+    <backend>
+        <forward-request />
+    </backend>
+    <outbound />
+    <on-error />
+</policies>
