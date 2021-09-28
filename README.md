@@ -25,9 +25,9 @@ On APIM, there are two approaches to import Azure Functions as API.
 1. GitHub account and repository.
 1. Azure subscription.
 1. [User-assigned managed identity (MSI)](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp#create-a-user-assigned-managed-identity) with Contributor role. This will be used for executing Deployment Scripts in Bicep.
-1. A Service Principal with Contributor role at subscription scope. This is the identity that will be used to access the Azure resources from GitHub Action. The account also requires [Read/Write permissions to Azure Graph API](https://docs.microsoft.com/en-us/graph/notifications-integration-app-registration#api-permissions).
+1. A Service Principal with Contributor role at subscription scope. This is the identity that will be used to access the Azure resources from GitHub Action. If you don't have a Service Principal, create one by following [these steps](https://docs.microsoft.com/en-us/azure/developer/github/connect-from-azure). The Service Principal also requires [Read/Write permissions to Azure Graph API](https://docs.microsoft.com/en-us/graph/notifications-integration-app-registration#api-permissions).
 
-## How to deploy
+## Setup an end-to-end CI/CD in a single workflow
 
 1. Fork this repo to your GitHub account.
 1. Clone the copy repo to your local machine.
