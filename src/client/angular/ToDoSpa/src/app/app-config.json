@@ -1,0 +1,22 @@
+{
+  "auth": {
+    "clientId": "__clientAppId__",
+    "authority": "__tenantDomainName__",
+    "validateAuthority": true,
+    "redirectUri": "__clientAppURL__",
+    "postLogoutRedirectUri": "__clientAppURL__",
+    "navigateToLoginRequestUrl": true
+  },
+    "cache": {
+        "cacheLocation": "localStorage"
+    },
+    "scopes": {
+        "loginRequest": ["openid", "profile"]
+    },
+    "resources": {
+      "todoListApi": {
+        "resourceUri": "__apimURL__/todos",
+        "resourceScope": "__backendAPIScope__"
+      }
+    }     
+}

@@ -1,0 +1,16 @@
+{
+    "version": "2.0",
+    "extensions": {
+        "cosmosDB": {
+            "connectionMode": "Gateway",
+            "protocol": "Https"
+        }
+    },
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        }
+    }
+}
