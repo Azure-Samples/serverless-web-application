@@ -128,7 +128,7 @@ jobs:
       with:
         tokenPrefix: '__'
         tokenSuffix: '__'
-        files: ${{ github.workspace }}/src/angular/src/app/app-config.json
+        files: ${{ github.workspace }}/${{ env.APP_SOURCE_PATH }}/${{ env.ANGULAR_PATH }}/src/app/app-config.json
       env: 
         clientAppId: ${{ steps.appRegistration.outputs.clientId }}
         clientAppURL: ${{ steps.infraDeployment.outputs.cdnEndpointURL }}
