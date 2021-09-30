@@ -1,4 +1,4 @@
-name: CI/CD for Http trigger Function and import Function API to API Management Service
+name: Build and publish .NET Functions
 on: 
   workflow_dispatch:
     inputs:
