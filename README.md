@@ -16,7 +16,7 @@ On APIM, there are two approaches to import Azure Functions as API.
 
     This is done through adding backend services of your Functions. This uses Functions' app key to access functions. The Bicep module [apimAPI.bicep](./deploy/modules/apimAPI.bicep) demonstrates how deploy this.
 
-1. OpenAPI definition.
+1. OpenAPI specification.
 
     By default, Azure Functions HTTP Trigger does not follow OpenAPI standard. [OpenAPI extension](https://github.com/Azure/azure-functions-openapi-extension/blob/main/docs/.enable-open-api-endpoints-in-proc.md) is required to enable OpenAPI documents. The Bicep module [apimOpenAPI.bicep](./deploy/modules/apimOpenAPI.bicep) demonstrates how deploy this.
 
@@ -27,7 +27,23 @@ On APIM, there are two approaches to import Azure Functions as API.
 1. [User-assigned managed identity (MSI)](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp#create-a-user-assigned-managed-identity) with Contributor role. This will be used for executing Deployment Scripts in Bicep.
 1. A Service Principal with Contributor role at subscription scope. This is the identity that will be used to access the Azure resources from GitHub Action. If you don't have a Service Principal, create one by following [these steps](https://docs.microsoft.com/en-us/azure/developer/github/connect-from-azure). The Service Principal also requires [Read/Write permissions to Azure Graph API](https://docs.microsoft.com/en-us/graph/notifications-integration-app-registration#api-permissions).
 
-## Setup an end-to-end CI/CD in a single workflow
+## About sample workflows:
+
+This repo contains three GitHub workflows:
+* [Create Azure Resource (IaC)](.github/workflows/azure-infra-cicd.yml) workflow validates Bicep files and creates Azure resources necessary to host the sample solution. The Bicep file will create the following resources:
+
+    - Azure API Management.
+    - Azure CDN.
+    - Azure CosmosDB (MongolDB API).
+    - Azure Functions (Windows).
+    - Azure Key Vault option to BYO.
+    - Azure Storage Account for hosting Static Website.
+
+* [Build and publish .NET](.github/workflows/functions-api-cicd.yml) workflow build .NET Core application and publish it to Azure Function. It also import the Http trigger Functions as API's to API Management using Bicep. This requires that Functions must be able to generate an OpenAPI specification.
+
+* [Build and publish Angular (SPA)](.github/workflows/spa-cicd.yml) workflow build Angular application and publish it to Azure Storage Account as a static website. This workflow will register both client and API applications in Azure Active Directory tenant of your subscription for authentication. It also purge Azure CDN to refresh static web content.
+
+## Setup an end-to-end CI/CD workflows:
 
 1. Fork this repo to your GitHub account.
 1. Clone the copy repo to your local machine.
