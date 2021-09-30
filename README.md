@@ -35,7 +35,7 @@ This repo contains three GitHub workflows:
 
     - Azure API Management.
     - Azure CDN.
-    - Azure CosmosDB (MongolDB API).
+    - Azure Cosmos DB for MongolDB.
     - Azure Functions (Windows).
     - Azure Key Vault option to BYO.
     - Azure Storage Account for hosting Static Website.
