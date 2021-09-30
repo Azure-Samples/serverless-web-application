@@ -1,4 +1,4 @@
-name: CI/CD for Angular on Azure Storage and CDN.
+name: Build and publish Angular (SPA)
 on: 
   workflow_dispatch:
     inputs:

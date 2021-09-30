@@ -30,7 +30,8 @@ On APIM, there are two approaches to import Azure Functions as API.
 ## About sample workflows:
 
 This repo contains three GitHub workflows:
-* [Create Azure Resource (IaC)](.github/workflows/azure-infra-cicd.yml) workflow validates Bicep files and creates Azure resources necessary to host the sample solution. The Bicep file will create the following resources:
+
+* [Create Azure Resource (IaC)](.github/workflows/azure-infra-cicd.yml) workflow validates Bicep files and creates Azure resources necessary to host the sample solution. The Bicep file will create the following resources as a pre-requisite to the next two workflows:
 
     - Azure API Management.
     - Azure CDN.
@@ -39,7 +40,7 @@ This repo contains three GitHub workflows:
     - Azure Key Vault option to BYO.
     - Azure Storage Account for hosting Static Website.
 
-* [Build and publish .NET](.github/workflows/functions-api-cicd.yml) workflow build .NET Core application and publish it to Azure Function. It also import the Http trigger Functions as API's to API Management using Bicep. This requires that Functions must be able to generate an OpenAPI specification.
+* [Build and publish .NET](.github/workflows/functions-api-cicd.yml) workflow build .NET Core application and publish it to Azure Function. It also import the HTTP Trigger Functions as API's to the API Management using Bicep. This requires that Functions must be able to generate an OpenAPI specification.
 
 * [Build and publish Angular (SPA)](.github/workflows/spa-cicd.yml) workflow build Angular application and publish it to Azure Storage Account as a static website. This workflow will register both client and API applications in Azure Active Directory tenant of your subscription for authentication. It also purge Azure CDN to refresh static web content.
 

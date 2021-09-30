@@ -1,4 +1,4 @@
-name: CI/CD for Serverless Web Application using Bicep
+name: Create Azure Resource (IaC)
 on: 
   workflow_dispatch:
     inputs:
