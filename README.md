@@ -2,7 +2,7 @@
 
 This sample references an architecture of a [serverless web application](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/serverless/web-app). The application serves static Angular.JS content from Azure Blob Storage (Static Website), and implements REST APIs for CRUD of a to do list with Azure Functions. The API reads data from Cosmos DB and returns the results to the web app. The GitHub workflow uses Azure Bicep for Infrastructure as Code to deploy and configure Azure resources.
 
-![Architecture Diagram](./media/serverless-web-app.png)
+![Architecture Diagram](./media/serverless-web-app.svg)
 
 ## Security
 
