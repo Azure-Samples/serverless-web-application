@@ -10,9 +10,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-
-- task: AzurePowerShell@5
+- task: AzureCLI@2
   inputs:
     azureSubscription: 'VS-01'
-    ScriptType: 'InlineScript'
-    Inline: 'az ad app create --display-name testApp --native-app false --oauth2-allow-implicit-flow true --reply-urls https://test.com'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az ad app create --display-name testApp --native-app false --oauth2-allow-implicit-flow true --reply-urls https://test.com'
+    addSpnToEnvironment: true
