@@ -9,11 +9,11 @@ on:
       APP_NAME_PREFIX: 
         description: 'Prefix to be used in naming Azure resources'
         required: true
-        default: 'prefix'
+        default: 'pd-servrless-'
       RESOURCE_GROUP_NAME: 
         description: 'Resource Group to deploy Azure resources'
         required: true
-        default: 'resource-group'
+        default: 'rg-pd-serverless'
       CLIENT_URL: 
         description: 'Client URL'
         required: true
@@ -25,15 +25,15 @@ on:
       AZURE_STORAGE_NAME: 
         description: 'Azure storage account name'
         required: true
-        default: 'storageaccountname'
+        default: 'st-pd-serverless'
       CDN_PROFILE_NAME: 
         description: 'CDN profile name'
         required: true
-        default: 'cdn-profile-name'
+        default: 'cdnp-pd-serverless'
       CDN_ENDPOINT_NAME: 
         description: 'CDN endpoint name'
         required: true
-        default: 'cdn-endpoint-name'                        
+        default: 'cdne-pd-serverless'                        
   
 # CONFIGURATION
 # For help, go to https://github.com/Azure/Actions

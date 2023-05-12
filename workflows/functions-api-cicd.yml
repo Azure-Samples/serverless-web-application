@@ -9,11 +9,11 @@ on:
       APP_NAME_PREFIX: 
         description: 'Prefix to be used in naming Azure resources'
         required: true
-        default: 'prefix'
+        default: 'pd-servrless-'
       RESOURCE_GROUP_NAME: 
         description: 'Resource Group to deploy Azure resources'
         required: true
-        default: 'resource-group'
+        default: 'rg-pd-serverless'
       API_NAME: 
         description: 'API name'
         required: true
@@ -25,11 +25,11 @@ on:
       APIM_NAME: 
         description: 'APIM name'
         required: true
-        default: 'apim-name'
+        default: 'apim-2do'
       FUNCTION_NAME: 
         description: 'Azure Functions name'
         required: true
-        default: 'function-name'
+        default: 'func-2do'
       ORIGIN_URL: 
         description: 'Client app URL' # This is CDN endpoint URL
         required: true
