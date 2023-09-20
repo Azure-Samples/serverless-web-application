@@ -88,3 +88,4 @@ jobs:
       run: |
             az logout
       if: always()
+
