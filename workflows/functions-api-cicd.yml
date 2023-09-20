@@ -9,11 +9,11 @@ on:
       APP_NAME_PREFIX: 
         description: 'Prefix to be used in naming Azure resources'
         required: true
-        default: 'prefix'
+        default: 'anil'
       RESOURCE_GROUP_NAME: 
         description: 'Resource Group to deploy Azure resources'
         required: true
-        default: 'resource-group'
+        default: 'anil-webapp-resource-group'
       API_NAME: 
         description: 'API name'
         required: true
@@ -21,19 +21,19 @@ on:
       API_DOCUMENT_URL: 
         description: 'API definition URL'
         required: true
-        default: 'https://<fuction-name>.azurewebsites.net/api/swagger.json'
+        default: 'https://webappanil.azurewebsites.net/api/swagger.json'
       APIM_NAME: 
         description: 'APIM name'
         required: true
-        default: 'apim-name'
+        default: 'webapp-anil-apim'
       FUNCTION_NAME: 
         description: 'Azure Functions name'
         required: true
-        default: 'function-name'
+        default: 'webappanil'
       ORIGIN_URL: 
         description: 'Client app URL' # This is CDN endpoint URL
         required: true
-        default: 'https://<cdn-endpoint-name>.azureedge.net'              
+        default: 'https://webappanil.azureedge.net'              
   
 # CONFIGURATION
 # For help, go to https://github.com/Azure/Actions

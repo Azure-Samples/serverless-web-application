@@ -9,31 +9,31 @@ on:
       APP_NAME_PREFIX: 
         description: 'Prefix to be used in naming Azure resources'
         required: true
-        default: 'prefix'
+        default: 'anil'
       RESOURCE_GROUP_NAME: 
         description: 'Resource Group to deploy Azure resources'
         required: true
-        default: 'resource-group'
+        default: 'anil-webapp-resource-group'
       CLIENT_URL: 
         description: 'Client URL'
         required: true
-        default: 'https://<cdn-endpoint-name>.azureedge.net'
+        default: 'https://webappanil1.azureedge.net'
       API_URL: 
         description: 'API on APIM URL'
         required: true
-        default: 'https://<apim-name>.azure-api.net/<api-name>'
+        default: 'https://webapp-anil-apim.azure-api.net/<api-name>'
       AZURE_STORAGE_NAME: 
         description: 'Azure storage account name'
         required: true
-        default: 'storageaccountname'
+        default: 'webappanilstorage'
       CDN_PROFILE_NAME: 
         description: 'CDN profile name'
         required: true
-        default: 'cdn-profile-name'
+        default: 'webapp-anil-profile'
       CDN_ENDPOINT_NAME: 
         description: 'CDN endpoint name'
         required: true
-        default: 'cdn-endpoint-name'                        
+        default: 'webapp-anil'                        
   
 # CONFIGURATION
 # For help, go to https://github.com/Azure/Actions
